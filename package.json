@@ -1,8 +1,8 @@
 {
-  "name": "alex-blog",
+  "name": "alexander-blog",
   "private": false,
-  "description": "Simple blog.",
-  "version": "0.1.0",
+  "description": "Blog related to software development.",
+  "version": "0.1.1",
   "author": "Alexander Valencia",
   "bugs": {
     "url": "https://github.com/alex16jpv/alex16jpv/issues"

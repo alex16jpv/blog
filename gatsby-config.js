@@ -1,12 +1,12 @@
 module.exports = {
   siteMetadata: {
-    title: `Alex's blog`,
+    title: `Alexander's blog`,
     author: {
       name: `Alexander Valencia`,
       summary: ``,
     },
-    description: `Simple blog.`,
-    siteUrl: `https://https://blog.alexpvalencia.com/`,
+    description: `Blog related to software development.`,
+    siteUrl: `https://blog.alexpvalencia.com/`,
     social: {
       twitter: `alexpvalencia`,
     },
