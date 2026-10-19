@@ -1,9 +1,9 @@
 #!/usr/bin/env python
 
-from datetime import datetime
+from datetime import datetime, timezone
 
 # Get the current date and time
-now = datetime.utcnow()
+now = datetime.now(timezone.utc)
 
 # Format the date and time in the required format
 formatted_date = now.strftime("%Y-%m-%dT%H:%M:%S.%fZ")

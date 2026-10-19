@@ -1,105 +1,98 @@
-<!-- AUTO-GENERATED-CONTENT:START (STARTER) -->
-<p align="center">
-  <a href="https://www.gatsbyjs.com">
-    <img alt="Gatsby" src="https://www.gatsbyjs.com/Gatsby-Monogram.svg" width="60" />
-  </a>
-</p>
-<h1 align="center">
-  Gatsby's blog starter
-</h1>
+# Alexander's blog
 
-Kick off your project with this blog boilerplate. This starter ships with the main Gatsby configuration files you might need to get up and running blazing fast with the blazing fast app generator for React.
+Source code for [blog.alexpvalencia.com](https://blog.alexpvalencia.com/), my personal blog about software development: architecture and design patterns, developer tools, and news from the tech and AI world.
 
-_Have another more specific idea? You may want to check out our vibrant collection of [official and community-created starters](https://www.gatsbyjs.com/docs/gatsby-starters/)._
+It is a static site built with [Gatsby 5](https://www.gatsbyjs.com/) and React 18, and it is deployed on [Vercel](https://vercel.com/).
 
-## 🚀 Quick start
+## Requirements
 
-1.  **Create a Gatsby site.**
+- **Node.js 24**. The version is set in `.nvmrc` and in the `engines` field of `package.json`. With [nvm](https://github.com/nvm-sh/nvm), run `nvm use`.
+- **npm** (included with Node.js)
+- **Python 3**, only needed for the post date helper
 
-    Use the Gatsby CLI ([install instructions](https://www.gatsbyjs.com/docs/tutorial/part-0/#gatsby-cli)) to create a new site, specifying the blog starter.
+## Running it locally
 
-    ```shell
-    # create a new Gatsby site using the blog starter
-    gatsby new my-blog-starter https://github.com/gatsbyjs/gatsby-starter-blog
-    ```
+```shell
+npm install
+npm run develop
+```
 
-1.  **Start developing.**
+The site runs at `http://localhost:8000`, and the GraphQL explorer is at `http://localhost:8000/___graphql`.
 
-    Navigate into your new site’s directory and start it up.
+Other scripts:
 
-    ```shell
-    cd my-blog-starter/
-    gatsby develop
-    ```
+| Command            | What it does                                           |
+| ------------------ | ------------------------------------------------------ |
+| `npm run build`    | Builds the production site into `public/`              |
+| `npm run serve`    | Serves the production build at `http://localhost:9000` |
+| `npm run clean`    | Deletes Gatsby's `.cache/` and `public/` folders       |
+| `npm run format`   | Formats the code and content with Prettier             |
+| `npm run new-date` | Prints the current UTC time in the post date format    |
 
-1.  **Open the source code and start editing!**
+## Writing a post
 
-    Your site is now running at `http://localhost:8000`!
+Each post is a Markdown file inside its own folder under `content/blog/`. The folder path becomes the post URL:
 
-    _Note: You'll also see a second link: _`http://localhost:8000/___graphql`_. This is a tool you can use to experiment with querying your data. Learn more about using this tool in the [Gatsby tutorial](https://www.gatsbyjs.com/tutorial/part-five/#introducing-graphiql)._
+```
+content/blog/
+├── hello-world/
+│   └── index.md                  → /hello-world/
+└── design-patterns/
+    └── hexagonal-architecture/
+        └── index.md              → /design-patterns/hexagonal-architecture/
+```
 
-    Open the `my-blog-starter` directory in your code editor of choice and edit `src/pages/index.js`. Save your changes and the browser will update in real time!
+Every post starts with this frontmatter:
 
-## 🚀 Quick start (Gatsby Cloud)
+```markdown
+---
+title: My Post Title
+date: "2026-10-19T14:00:00.000Z"
+description: "A one-sentence summary of about 150-160 characters."
+---
 
-Deploy this starter with one click on [Gatsby Cloud](https://www.gatsbyjs.com/cloud/):
+## First section
 
-[<img src="https://www.gatsbyjs.com/deploynow.svg" alt="Deploy to Gatsby Cloud">](https://www.gatsbyjs.com/dashboard/deploynow?url=https://github.com/gatsbyjs/gatsby-starter-blog)
+Post content...
+```
 
-## 🧐 What's inside?
+- `date` must be in ISO 8601 format and in UTC. Get the current one with `npm run new-date`.
+- `description` is used on the home page, in search engine results and in the RSS feed.
+- Start the body with a `##` heading. The title is already rendered as the page's `h1`.
+- Images and other files can go in the same folder as `index.md` and be linked with a relative path.
 
-A quick look at the top-level files and directories you'll see in a Gatsby project.
+## Project structure
 
-    .
-    ├── node_modules
-    ├── src
-    ├── .gitignore
-    ├── .prettierrc
-    ├── gatsby-browser.js
-    ├── gatsby-config.js
-    ├── gatsby-node.js
-    ├── gatsby-ssr.js
-    ├── LICENSE
-    ├── package-lock.json
-    ├── package.json
-    └── README.md
+```
+.
+├── content/blog/       # Posts (Markdown)
+├── src/
+│   ├── components/     # Layout, Bio and Seo components
+│   ├── images/         # Profile picture and site icon
+│   ├── pages/          # Home page and 404 page
+│   ├── templates/      # Blog post template
+│   ├── utils/date.py   # Post date helper
+│   └── style.css       # Global styles
+├── static/             # Files copied as they are (favicon, robots.txt)
+├── gatsby-config.js    # Site metadata and plugins
+├── gatsby-node.js      # Creates a page for each post
+├── gatsby-browser.js   # Global CSS and fonts
+└── gatsby-ssr.js       # HTML attributes (lang)
+```
 
-1.  **`/node_modules`**: This directory contains all of the modules of code that your project depends on (npm packages) are automatically installed.
+Site settings such as the title, author, bio and Twitter handle are in `siteMetadata` in `gatsby-config.js`.
 
-2.  **`/src`**: This directory will contain all of the code related to what you will see on the front-end of your site (what you see in the browser) such as your site header or a page template. `src` is a convention for “source code”.
+## Deployment
 
-3.  **`.gitignore`**: This file tells git which files it should not track / not maintain a version history for.
+The site is deployed on Vercel from GitHub:
 
-4.  **`.prettierrc`**: This is a configuration file for [Prettier](https://prettier.io/). Prettier is a tool to help keep the formatting of your code consistent.
+- Every push to `main` deploys to production.
+- Every pull request gets a preview deployment.
 
-5.  **`gatsby-browser.js`**: This file is where Gatsby expects to find any usage of the [Gatsby browser APIs](https://www.gatsbyjs.com/docs/browser-apis/) (if any). These allow customization/extension of default Gatsby settings affecting the browser.
+Vercel picks the Node.js version from the `engines` field in `package.json`.
 
-6.  **`gatsby-config.js`**: This is the main configuration file for a Gatsby site. This is where you can specify information about your site (metadata) like the site title and description, which Gatsby plugins you’d like to include, etc. (Check out the [config docs](https://www.gatsbyjs.com/docs/gatsby-config/) for more detail).
+The RSS feed is generated at `/rss.xml`.
 
-7.  **`gatsby-node.js`**: This file is where Gatsby expects to find any usage of the [Gatsby Node APIs](https://www.gatsbyjs.com/docs/node-apis/) (if any). These allow customization/extension of default Gatsby settings affecting pieces of the site build process.
+## License
 
-8.  **`gatsby-ssr.js`**: This file is where Gatsby expects to find any usage of the [Gatsby server-side rendering APIs](https://www.gatsbyjs.com/docs/ssr-apis/) (if any). These allow customization of default Gatsby settings affecting server-side rendering.
-
-9.  **`LICENSE`**: This Gatsby starter is licensed under the 0BSD license. This means that you can see this file as a placeholder and replace it with your own license.
-
-10. **`package-lock.json`** (See `package.json` below, first). This is an automatically generated file based on the exact versions of your npm dependencies that were installed for your project. **(You won’t change this file directly).**
-
-11. **`package.json`**: A manifest file for Node.js projects, which includes things like metadata (the project’s name, author, etc). This manifest is how npm knows which packages to install for your project.
-
-12. **`README.md`**: A text file containing useful reference information about your project.
-
-## 🎓 Learning Gatsby
-
-Looking for more guidance? Full documentation for Gatsby lives [on the website](https://www.gatsbyjs.com/). Here are some places to start:
-
-- **For most developers, we recommend starting with our [in-depth tutorial for creating a site with Gatsby](https://www.gatsbyjs.com/tutorial/).** It starts with zero assumptions about your level of ability and walks through every step of the process.
-
-- **To dive straight into code samples, head [to our documentation](https://www.gatsbyjs.com/docs/).** In particular, check out the _Guides_, _API Reference_, and _Advanced Tutorials_ sections in the sidebar.
-
-## 💫 Deploy
-
-[Build, Deploy, and Host On The Only Cloud Built For Gatsby](https://www.gatsbyjs.com/cloud/)
-
-Gatsby Cloud is an end-to-end cloud platform specifically built for the Gatsby framework that combines a modern developer experience with an optimized, global edge network.
-
-<!-- AUTO-GENERATED-CONTENT:END -->
+© Alexander Valencia. All rights reserved. The posts and code in this repository may not be reused without permission.

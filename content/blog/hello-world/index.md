@@ -1,7 +1,7 @@
 ---
 title: Hello World
 date: "2022-12-09T22:12:03.284Z"
-description: "Hello World"
+description: "Welcome to my blog: who I am and what you will find here, from programming languages and frameworks to agile methodologies."
 ---
 
 ### Hi everyone!

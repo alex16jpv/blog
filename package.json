@@ -1,11 +1,11 @@
 {
   "name": "alexander-blog",
-  "private": false,
+  "private": true,
   "description": "Blog related to software development.",
   "version": "0.1.1",
   "author": "Alexander Valencia",
   "bugs": {
-    "url": "https://github.com/alex16jpv/alex16jpv/issues"
+    "url": "https://github.com/alex16jpv/blog/issues"
   },
   "dependencies": {
     "gatsby": "^5.16.1",
@@ -35,15 +35,14 @@
   "engines": {
     "node": "24.x"
   },
-  "homepage": "https://github.com/alex16jpv/alex16jpv#readme",
+  "homepage": "https://blog.alexpvalencia.com/",
   "keywords": [
     "blog"
   ],
-  "license": "0BSD",
-  "main": "n/a",
+  "license": "UNLICENSED",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/alex16jpv/alex16jpv.git"
+    "url": "git+https://github.com/alex16jpv/blog.git"
   },
   "scripts": {
     "build": "gatsby build",
@@ -52,6 +51,6 @@
     "start": "npm run develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
+    "new-date": "python3 src/utils/date.py"
   }
 }
