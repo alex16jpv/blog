@@ -45,7 +45,7 @@ const Layout = ({ location, title, children }) => {
         {twitter && (
           <>
             {` · `}
-            <a href={`https://twitter.com/${twitter}`}>Twitter</a>
+            <a href={`https://x.com/${twitter}`}>Twitter</a>
           </>
         )}
         {` · `}
